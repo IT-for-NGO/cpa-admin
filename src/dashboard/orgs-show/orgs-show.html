@@ -11,6 +11,7 @@
     <div class="col-md-4 toolbar__buttons">
       <!-- Not editing -->
       <button if.bind="!isEditing" click.delegate="startEdit()" class="btn btn-default">Edit</button>
+      <a if.bind="!isEditing" href="http://www2.cpafrance.fr/?ak=${orgAccessKey}" target="_blank" class="btn btn-default">View as organisation</a>
       <button if.bind="!isEditing" click.delegate="delete()" class="btn btn-danger">Delete</button>
 
       <!-- Editing -->

@@ -15,9 +15,19 @@ export class OrgsShow {
 
   activate(transition) {
     console.log(transition)
-    return this.httpClient.fetch(`organisations/${transition.id}`)
-      .then(r => r.json())
-      .then(data => this.org = data);
+    return Promise.all([
+      this.httpClient.fetch(`organisations/${transition.id}`)
+        .then(r => r.json())
+        .then(data => {
+          this.org = data
+        }),
+      this.httpClient.fetch(`organisations/${transition.id}/accessKey`)
+        .then(r => r.json())
+        .then(data => {
+          this.orgAccessKey = data.accessKey;
+        })
+        .catch(e => console.log(e))
+    ]);
   }
 
   startEdit() {
