@@ -1,0 +1,30 @@
+<template>
+  <ol class="breadcrumb">
+    <li class="active">Organisations</li>
+  </ol>
+  <div class="row toolbar">
+    <div class="col-md-8 toolbar__header">
+      <h2 click.delegate="foo()">Organisations</h2>
+    </div>
+    <div class="col-md-4 toolbar__buttons">
+      <a class="btn btn-default" route-href="route: d-orgs-create">Create</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="org of organisations">
+        <td width="50">${org.id}</td>
+        <td>
+          <a route-href="route: d-orgs-show; params.bind: {id: org.id}">${org.name}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>

@@ -1,0 +1,69 @@
+<template>
+  <form>
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset>
+          <legend>General</legend>
+          <div class="form-group ${errors.name ? 'has-error' : ''}">
+            <label for="name" class="control-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" value.bind="input.name">
+          </div>
+          <div class="form-group ${errors.mailAddress ? 'has-error' : ''}">
+            <label for="mailAddress" class="control-label">Email address</label>
+            <input type="email" class="form-control" id="mailAddress" placeholder="Email address" value.bind="input.mailAddress">
+            <span if.bind="errors.mailAddress == 'Conflict'" class="help-block">Email address already in use.</span>
+          </div>
+          <div class="form-group ${errors.category ? 'has-error' : ''}">
+            <label for="category" class="control-label">Category</label>
+            <select class="form-control" id="category" placeholder="Category" value.bind="input.category">
+              <option>université</option>
+              <option>bibliothéque</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md-4">
+        <fieldset>
+          <legend>Address</legend>
+          <div class="form-group ${errors['address.street1'] ? 'has-error' : ''}">
+            <label for="address.street1" class="control-label">Street 1</label>
+            <input type="text" class="form-control" id="address.street1" placeholder="Name" value.bind="input.address.street1" place-autocomplete="target.bind: input;">
+          </div>
+          <div class="form-group ${errors['address.street2'] ? 'has-error' : ''}">
+            <label for="address.street2" class="control-label">Street 2</label>
+            <input type="text" class="form-control" id="address.street2" placeholder="Name" value.bind="input.address.street2">
+          </div>
+          <div class="form-group ${errors['address.postalCode'] ? 'has-error' : ''}">
+            <label for="address.postalCode" class="control-label">Postal code</label>
+            <input type="text" class="form-control" id="address.postalCode" placeholder="Name" value.bind="input.address.postalCode">
+          </div>
+          <div class="form-group ${errors['address.locality'] ? 'has-error' : ''}">
+            <label for="address.locality" class="control-label">Locality</label>
+            <input type="text" class="form-control" id="address.locality" placeholder="Name" value.bind="input.address.locality">
+          </div>
+          <div class="form-group ${errors['address.country'] ? 'has-error' : ''}">
+            <label for="address.country" class="control-label">Country</label>
+            <input type="text" class="form-control" id="address.country" placeholder="Name" value.bind="input.address.country">
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md-4">
+        <fieldset>
+          <legend>Contact</legend>
+          <div class="form-group ${errors['contact.name'] ? 'has-error' : ''}">
+            <label for="contact.name" class="control-label">Name</label>
+            <input type="text" class="form-control" id="contact.name" placeholder="Name" value.bind="input.contact.name">
+          </div>
+          <div class="form-group ${errors['contact.mailAddress'] ? 'has-error' : ''}">
+            <label for="contact.mailAddress" class="control-label">Email address</label>
+            <input type="email" class="form-control" id="contact.mailAddress" placeholder="Email address" value.bind="input.contact.mailAddress">
+          </div>
+          <div class="form-group ${errors['contact.phoneNumber'] ? 'has-error' : ''}">
+            <label for="contact.phoneNumber" class="control-label">Phone number</label>
+            <input type="text" class="form-control" id="contact.phoneNumber" placeholder="Phone number" value.bind="input.contact.phoneNumber">
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </form>
+</template>

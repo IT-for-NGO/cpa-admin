@@ -1,0 +1,89 @@
+<template>
+  <ol class="breadcrumb">
+    <li><a route-href="route: d-orgs-list">Organisations</a></li>
+    <li class="active">${org.name}</li>
+  </ol>
+
+  <div class="row toolbar">
+    <div class="col-md-8 toolbar__header">
+      <h2>${org.name}</h2>
+    </div>
+    <div class="col-md-4 toolbar__buttons">
+      <!-- Not editing -->
+      <button if.bind="!isEditing" click.delegate="startEdit()" class="btn btn-default">Edit</button>
+      <button if.bind="!isEditing" click.delegate="delete()" class="btn btn-danger">Delete</button>
+
+      <!-- Editing -->
+      <button if.bind="isEditing" click.delegate="update()" class="btn btn-primary">Update</button>
+      <button if.bind="isEditing" click.delegate="cancelEdit()" class="btn btn-default">Cancel</button>
+    </div>
+  </div>
+
+  <div if.bind="!isEditing">
+    <div class="row">
+      <div class="col-md-4">
+        <fieldset>
+          <legend>General</legend>
+          <div class="form-group">
+            <label class="control-label">Name</label>
+            <div>${org.name}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Email address</label>
+            <div>${org.mailAddress}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Category</label>
+            <div>${org.category}</div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md-4">
+        <fieldset>
+          <legend>Address</legend>
+          <div class="form-group">
+            <label class="control-label">Street 1</label>
+            <div>${org.address.street1 || '/'}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Street 2</label>
+            <div>${org.address.street2 || '/'}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Postal code</label>
+            <div>${org.address.postalCode}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Locality</label>
+            <div>${org.address.locality}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Country</label>
+            <div>${org.address.country || '/'}</div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md-4">
+        <fieldset>
+          <legend>Contact</legend>
+          <div class="form-group">
+            <label class="control-label">Name</label>
+            <div>${org.contact.name}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Email address</label>
+            <div>${org.contact.mailAddress}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Phone number</label>
+            <div>${org.contact.phoneNumber || '/'}</div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <div if.bind="isEditing">
+    <compose view="./orgs-form.html"></compose>
+  </div>
+</template>
